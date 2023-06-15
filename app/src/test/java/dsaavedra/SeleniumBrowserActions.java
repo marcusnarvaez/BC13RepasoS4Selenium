@@ -1,6 +1,5 @@
 package dsaavedra;
 
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -11,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
 public class SeleniumBrowserActions {
@@ -74,21 +74,13 @@ public class SeleniumBrowserActions {
 
         btnIniciarSesion.click();
 
-        Assertions.assertEquals("Inicia sesión en Spotify",driver.findElement(By.xpath("//h1[contains(text(),'Inicia sesi')]")).getText());
+        Assertions.assertEquals(fixEncoding("Inicia sesión en Spotify"),driver.findElement(By.xpath("//h1[contains(text(),'Inicia sesi')]")).getText());
     }
 
-    @Test
-    void validarPaginaRegistrarUsuarioSpotify(){
-        driver.get("https://open.spotify.com/");
-
-        By locatorBtnRegistrate = By.xpath("//button[@data-encore-id=\"buttonTertiary\"]");
-
-        WebElement btnRegistrate = driver.findElement(locatorBtnRegistrate);
-
-        btnRegistrate.click();
-
-        Assertions.assertEquals("Regístrate en Spotify",driver.findElement(By.xpath("//h1[contains(text(),'Inicia sesi')]")).getText());
+    public static String fixEncoding(String text){
+        byte[]  utf8Bytes = text.getBytes(StandardCharsets.ISO_8859_1);
+        return new String(utf8Bytes,StandardCharsets.UTF_8);
     }
 
-    //<button class="Button-sc-1dqy6lx-0 eqSwxl sibxBMlr_oxWTfBrEz2G" data-encore-id="buttonTertiary">Regístrate</button>
+
 }

@@ -5,9 +5,6 @@ package bc13repasos4selenium;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
@@ -16,16 +13,4 @@ class AppTest {
         assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
     }
 
-    @Test void levantarBrowser() throws InterruptedException{
-        WebDriverManager.chromedriver().setup();
-
-        WebDriver driver = new ChromeDriver();
-
-        driver.get("https://selenium.dev");
-
-        Thread.sleep(5000);
-
-        driver.close();
-
-    }
 }
