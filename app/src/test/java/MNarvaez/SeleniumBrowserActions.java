@@ -1,4 +1,4 @@
-package MNarvaez;
+/*package MNarvaez;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
@@ -60,3 +60,4 @@ public class SeleniumBrowserActions {
         By locatorBtnIniciarSesion = By.xpath()
     }
 }
+*/

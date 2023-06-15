@@ -1,5 +1,6 @@
 package dsaavedra;
 
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -75,4 +76,19 @@ public class SeleniumBrowserActions {
 
         Assertions.assertEquals("Inicia sesión en Spotify",driver.findElement(By.xpath("//h1[contains(text(),'Inicia sesi')]")).getText());
     }
+
+    @Test
+    void validarPaginaRegistrarUsuarioSpotify(){
+        driver.get("https://open.spotify.com/");
+
+        By locatorBtnRegistrate = By.xpath("//button[@data-encore-id=\"buttonTertiary\"]");
+
+        WebElement btnRegistrate = driver.findElement(locatorBtnRegistrate);
+
+        btnRegistrate.click();
+
+        Assertions.assertEquals("Regístrate en Spotify",driver.findElement(By.xpath("//h1[contains(text(),'Inicia sesi')]")).getText());
+    }
+
+    //<button class="Button-sc-1dqy6lx-0 eqSwxl sibxBMlr_oxWTfBrEz2G" data-encore-id="buttonTertiary">Regístrate</button>
 }
